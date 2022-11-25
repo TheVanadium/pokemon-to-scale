@@ -1,0 +1,9 @@
+#pokemonSelector {
+    background-color: none;
+    margin-top: 43px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    z-index: 2;
+  }

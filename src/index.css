@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#conga-wrapper {
+  z-index: 1;
+  margin-top: 64.5px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+#conga-wrapper img:hover{
+  opacity: 0.8;  
+}
