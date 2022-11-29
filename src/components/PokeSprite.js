@@ -5,11 +5,9 @@ export default function PokeSprite( {pokeData, selfTerminate} ) {
         height: pokeData.height*10 + "px",
     }
 
-    
-
     return (
-        <div onClick={selfTerminate}>
-            <img src={pokeData.sprites.front_default} alt={pokeData.name} style={pokeStyle}></img>
+        <div className="poke-sprite" onClick={selfTerminate}>
+            <img className="poke-img" src={pokeData.sprites.front_default} alt={pokeData.name} style={pokeStyle}/>
         </div>
     )
 }
