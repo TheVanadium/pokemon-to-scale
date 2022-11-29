@@ -11,8 +11,6 @@ const Header = () => {
           <li class="nav-item">
             <a href="https://github.com/TheVanadium" id="icon-target">by Garret Castro</a>
           </li>
-
-          
         </ul>
       </nav>
     )
