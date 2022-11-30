@@ -1,0 +1,54 @@
+.poke-sprite {
+/* center content*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+poke-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.sprite-info {
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    padding: 5px; 
+    text-align: center;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.sprite-info::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    margin-left: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid black;
+}
+    
+.poke-sprite:hover .sprite-info {
+    /* don't change size of parent element */
+    visibility: visible;
+    opacity: 1;
+    top: -6rem;
+}
+
+
+.poke-sprite:hover .poke-img {
+    background-blend-mode: multiply;
+    background: rgb(214, 214, 214);
+    border-radius: 10%;
+}
