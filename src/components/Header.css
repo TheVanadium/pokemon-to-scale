@@ -27,7 +27,7 @@
     text-align: center;
   }
   
-  .nav-item:hover {
+  .nav-item a:hover {
     text-decoration: underline;
   }
   
@@ -35,9 +35,8 @@
     margin-right: auto;
     width: 20%;
     text-align: left;
+    padding-left: 1%;
   }
   .nav-item:last-child{
-    width: 20%;
-    text-align: right;
-    margin-left: auto;
+    padding-right: 1%;
   }

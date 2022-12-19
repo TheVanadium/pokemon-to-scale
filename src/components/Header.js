@@ -6,7 +6,10 @@ const Header = () => {
         <nav class="navbar">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="https://github.com/TheVanadium/pokemon-to-scale">Pokémon to Scale</a>
+            <p>Pokémon to Scale</p>
+          </li>
+          <li class="nav-item">
+            <a href="https://github.com/TheVanadium/pokemon-to-scale" id="icon-target">Github</a>
           </li>
           <li class="nav-item">
             <a href="https://thevanadium.github.io/portfolio/" id="icon-target">by Garret Castro</a>
