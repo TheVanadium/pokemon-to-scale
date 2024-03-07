@@ -32,8 +32,9 @@ function App() {
 
   function submitClicked() {
     let input = document.getElementById('selector')
-    if (fullPokeList.includes(input.value)){
-      loadPokeData(input.value)
+    let lowerCaseName = input.value.toLowerCase()
+    if (fullPokeList.includes(lowerCaseName)){
+      loadPokeData(lowerCaseName)
     }
     input.value=''
   }
