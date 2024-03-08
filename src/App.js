@@ -35,8 +35,11 @@ function App() {
     let lowerCaseName = input.value.toLowerCase()
     if (fullPokeList.includes(lowerCaseName)){
       loadPokeData(lowerCaseName)
+      input.value=''
+      if (input.className === "error") input.className = ""
+      return
     }
-    input.value=''
+    input.className = "error"
   }
   
   // array splicing not causing a rerender so we need to figure out a different way to delete pokemon onclick
