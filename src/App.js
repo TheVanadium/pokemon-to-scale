@@ -32,9 +32,9 @@ function App() {
 
   function submitClicked() {
     let input = document.getElementById('selector')
-    let lowerCaseName = input.value.toLowerCase()
-    if (fullPokeList.includes(lowerCaseName)){
-      loadPokeData(lowerCaseName)
+    let processedName = processPokemonName(input.value)
+    if (fullPokeList.includes(processedName)){
+      loadPokeData(processedName)
       input.value=''
       if (input.className === "error") input.className = ""
       return
@@ -42,6 +42,28 @@ function App() {
     input.className = "error"
   }
   
+  // converts complex names like "Mega Charizard X" to "charizard-mega-x" so the api can handle it
+  function processPokemonName(pokemonName) {
+    pokemonName = pokemonName.toLowerCase()
+    let words = pokemonName.split(' ')    
+    // 3 possibilities
+    // 1 word, such as "vaporeon"
+    // 2 words, such as "gigantamax flapple"
+    // 3 words, such as "mega charizard x"
+    switch (words[0]) {
+      case "gigantamax": words[0] = "gmax"; break
+      case "alolan": words[0] = "alola"; break
+    }
+
+    switch (words.length) {
+      case 1: return words[0]
+      case 2: return words[1] + "-" + words[0]
+      case 3: return words[1] + "-mega-" + words[2]
+      // unprocessable names
+      default: return pokemonName
+    }
+  }
+
   // array splicing not causing a rerender so we need to figure out a different way to delete pokemon onclick
   function selfTerminate(index){
     setPokemons(oldMons=>{
