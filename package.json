@@ -41,5 +41,17 @@
   },
   "devDependencies": {
     "gh-pages": "^4.0.0"
+  },
+  "description": "This web app displays pokémon proportionally based on their in-game height value. There are two main features: a text box that the user inputs their pokemon name to and a large area below it where the pokemon appear.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheVanadium/pokemon-to-scale.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheVanadium/pokemon-to-scale/issues"
   }
 }
