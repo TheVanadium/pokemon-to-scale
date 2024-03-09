@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/pokemon-to-scale/static/css/main.b8f34f67.css",
-    "main.js": "/pokemon-to-scale/static/js/main.b6245bcc.js",
+    "main.js": "/pokemon-to-scale/static/js/main.58ba14a7.js",
     "index.html": "/pokemon-to-scale/index.html",
     "main.b8f34f67.css.map": "/pokemon-to-scale/static/css/main.b8f34f67.css.map",
-    "main.b6245bcc.js.map": "/pokemon-to-scale/static/js/main.b6245bcc.js.map"
+    "main.58ba14a7.js.map": "/pokemon-to-scale/static/js/main.58ba14a7.js.map"
   },
   "entrypoints": [
     "static/css/main.b8f34f67.css",
-    "static/js/main.b6245bcc.js"
+    "static/js/main.58ba14a7.js"
   ]
 }
