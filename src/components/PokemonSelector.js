@@ -10,7 +10,7 @@ const PokemonSelector = (prop) => {
     };
 
     return (
-        <div id="pokemonSelector">
+        <div id="pokemon-selector">
             <input
                 type="text"
                 id="selector"
