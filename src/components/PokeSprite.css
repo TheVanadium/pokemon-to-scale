@@ -1,5 +1,4 @@
 .poke-sprite {
-/* center content*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,6 +25,7 @@ poke-img {
     opacity: 0;
     transition: opacity 0.5s ease;
 }
+
 .sprite-info::after {
     content: "";
     position: absolute;
@@ -49,6 +49,6 @@ poke-img {
 
 .poke-sprite:hover .poke-img {
     background-blend-mode: multiply;
-    background: rgb(214, 214, 214);
+    background: rgb(214 214 214);
     border-radius: 10%;
 }

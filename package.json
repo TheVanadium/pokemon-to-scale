@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.0",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
@@ -40,7 +41,13 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0"
+    "eslint": "^8.57.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.34.0",
+    "gh-pages": "^4.0.0",
+    "prettier": "3.2.5",
+    "stylelint": "^16.2.1",
+    "stylelint-config-standard": "^36.0.0"
   },
   "description": "This web app displays pokémon proportionally based on their in-game height value. There are two main features: a text box that the user inputs their pokemon name to and a large area below it where the pokemon appear.",
   "main": "index.js",
