@@ -1,1 +1,4 @@
-{}
+{
+    "tabWidth": 4,
+    "object-curly-spacing": "off"
+}

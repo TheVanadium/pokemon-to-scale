@@ -1,4 +1,9 @@
 {
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
     "env": {
         "browser": true,
         "es2021": true
@@ -15,5 +20,8 @@
         "react"
     ],
     "rules": {
+        "linebreak-style": 0,
+        "indent": ["error", 4],
+        "quotes": ["error", "double"]
     }
 }
