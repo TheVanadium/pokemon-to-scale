@@ -1,6 +1,6 @@
 # Pokémon to Scale
 
-This web app displays pokémon proportionally based on their in-game height value. There are two main features: a text box that the user inputs their pokemon name to and a large area below it where the pokemon appear.
+This web app displays pokémon proportionally based on their in-game height value. There are two main features: a text box that the user inputs their pokemon name to and a large area below it where the pokemon appear. Clicking the pokemon sprites will remove them.
 
 This is hosted on GitHub pages at:
 https://thevanadium.github.io/pokemon-to-scale/
