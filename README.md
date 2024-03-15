@@ -7,7 +7,7 @@ https://thevanadium.github.io/pokemon-to-scale/
 
 ## Installation
 
-After cloning the main directory, install node modules.
+See [CONTRIBUTING.md](https://github.com/lichess-org/TheVanadium/pokemon-to-scale/blob/master/contributing.md) for instructions on how to install and run the app locally.
 
 ## Usage
 
