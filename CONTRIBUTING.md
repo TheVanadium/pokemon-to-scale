@@ -13,6 +13,11 @@ After completing installation:
 - [Pick a GitHub issue to work on](https://github.com/TheVanadium/pokemon-to-scale/issues).
 - (Optional) If you know me personally, communicate with me via [Discord](https://discord.com).
 
+Please adhere to the following guidelines when contributing code:
+- Commit Syntax: (https://www.conventionalcommits.org/en/v1.0.0/)
+- JavaScript Style Guide: ESlint. Run `npm run lint` to check for errors.
+- CSS Style Guide: Stylelint. Run `npx stylelint **/*.css` to check for errors.
+
 ## I want to report a bug or a problem about this project
 
 [**Make an issue**](https://github.com/TheVanadium/pokemon-to-scale/issues/new). Before creating an issue, make sure that:
