@@ -1,15 +1,15 @@
 # Contributing
 
-## I want to contribute code to this project
-
-### Installation
+## Installation
 
 1. Clone the repository
 2. Run `npm install` to install the dependencies
 3. Run `npm start` to start the server
 4. Open the given URL in your browser
 
-After completing installation: 
+## Contributing Code
+
+After completing installation:
 - [Pick a GitHub issue to work on](https://github.com/TheVanadium/pokemon-to-scale/issues).
 - (Optional) If you know me personally, communicate with me via [Discord](https://discord.com).
 
