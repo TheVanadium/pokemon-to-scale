@@ -11,7 +11,7 @@ See [CONTRIBUTING.md](https://github.com/TheVanadium/pokemon-to-scale/blob/main/
 
 ## Usage
 
-All pokemon in PokéAPI (https://pokeapi.co/) API should be available for input and display.
+All pokemon in [PokéAPI](https://pokeapi.co/) should be available for input and display.
 
 Input: "vaporeon"
 Result: a 100x100 px image of a Vaporeon
