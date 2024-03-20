@@ -1,6 +1,6 @@
 # Pokémon to Scale
 
-This web app displays pokémon proportionally based on their in-game height value. There are two main features: a text box that the user inputs their pokémon name to and a large area below it where the pokémon appear. Clicking the pokémon sprites will remove them.
+This web app displays Pokémon proportionally based on their in-game height value. There are two main features: a text box that the user inputs their Pokémon name to and a large area below it where the Pokémon appear. Clicking the Pokémon sprites will remove them.
 
 This is hosted on GitHub pages at:
 https://thevanadium.github.io/pokemon-to-scale/
@@ -11,7 +11,7 @@ See [CONTRIBUTING.md](https://github.com/TheVanadium/pokemon-to-scale/blob/main/
 
 ## Usage
 
-All pokemon in [PokéAPI](https://pokeapi.co/) should be available for input and display.
+All Pokémon in [PokéAPI](https://pokeapi.co/) should be available for input and display.
 
 Input: "vaporeon"
 Result: a 100x100 px image of a Vaporeon
