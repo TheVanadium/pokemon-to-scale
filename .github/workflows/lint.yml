@@ -31,4 +31,4 @@
               VALIDATE_CHECKOV: "false"
               VALIDATE_JAVASCRIPT_STANDARD: "false"
               VALIDATE_MARKDOWN: "false"
-              VALIDATE_NATURAL: "false"
+              VALIDATE_NATURAL_LANGUAGE: "false"
