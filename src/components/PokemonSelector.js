@@ -17,7 +17,7 @@ const PokemonSelector = (prop) => {
                 onKeyPress={handleKeyPress}
             ></input>
             <button onClick={prop.submitName} id="pokemon-btn">
-                Add Pokemon
+                Add Pokémon
             </button>
         </div>
     );
