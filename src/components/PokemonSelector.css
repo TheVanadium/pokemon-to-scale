@@ -1,10 +1,35 @@
 #pokemon-selector {
-    margin-top: 100px;
+    margin-top: 10vh;
     width: 100%;
     display: flex;
     justify-content: center;
-    position: fixed;
+    position: absolute;
     z-index: 2;
+    height: 2.5%;
+  }
+
+  #pokemon-selector #selector {
+      width: 9vw;
+      font-size: max(1.33vh, 0.66vw); /* same as header */
+      border: 0.15vh solid grey;
+      border-radius: 0.5vh;
+      padding: 0.5vw;
+    }
+
+    #pokemon-selector #selector:focus{
+      outline: none;
+    }
+
+  #pokemon-selector #pokemon-btn {
+    width: fit-content;
+    font-size: min(1.33vh, 1.2vw); /* same as header */
+    padding: 0.5vw;
+    border: 0.15vh solid darkgrey;
+    border-radius: 0.5vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
 .error {
