@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Header from "./components/Header";
-import PokeSprite from "./components/PokeSprite";
+import PokeSpriteList from "./components/PokeSpriteList";
 import PokemonSelector from "./components/PokemonSelector";
 import axios from "axios";
 
@@ -98,33 +98,14 @@ function App() {
         }
     }
 
-    /**
-     * Removes a pokemon from the list
-     * @param {number} index The index of the pokemon to remove
-     */
-    function selfTerminate(index) {
-        setPokemons((oldMons) => {
-            const left = oldMons.slice(0, index);
-            const right = oldMons.slice(index + 1);
-            return [...left, ...right];
-        });
-    }
-
     return (
         <div className="app">
             <Header />
             <PokemonSelector submitName={submitClicked} />
-            <div id="conga-wrapper">
-                {pokemons.map((pokemon, index) => (
-                    <PokeSprite
-                        key={index}
-                        pokeData={pokemon}
-                        selfTerminate={() => {
-                            selfTerminate(index);
-                        }}
-                    />
-                ))}
-            </div>
+            <PokeSpriteList
+                pokemons={pokemons}
+                setPokemons={setPokemons}
+            ></PokeSpriteList>
         </div>
     );
 }
