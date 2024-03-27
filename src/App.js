@@ -29,12 +29,6 @@ function App() {
         loadPokeData("vaporeon");
     }, []);
 
-    useEffect(() => {
-        if (pokemonData) {
-            setPokemons((oldPokeList) => [...oldPokeList, pokemonData]);
-        }
-    }, [pokemonData]);
-
     /**
      * Loads the data for a pokemon into the pokemonData state
      * @param {string} pokeName The name of the pokemon to load
@@ -105,6 +99,8 @@ function App() {
             <PokeSpriteList
                 pokemons={pokemons}
                 setPokemons={setPokemons}
+                pokemonData={pokemonData}
+                setPokemonData={setPokemonData}
             ></PokeSpriteList>
         </div>
     );

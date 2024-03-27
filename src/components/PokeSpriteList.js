@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PokeSprite from "./PokeSprite";
 import "./PokeSpriteList.css";
+import PropTypes from "prop-types";
 
 /**
  * Stores and displays the list of pokemon sprites
@@ -10,9 +11,26 @@ import "./PokeSpriteList.css";
  */
 const PokeSpriteList = (prop) => {
     PokeSpriteList.propTypes = {
-        pokemons: Array,
-        setPokemons: Function,
+        pokemons: PropTypes.oneOfType([
+            PropTypes.array,
+            PropTypes.oneOf([null]),
+        ]),
+        setPokemons: PropTypes.func,
+        pokemonData: PropTypes.oneOfType([
+            PropTypes.object,
+            PropTypes.oneOf([null]),
+        ]),
+        setPokemonData: PropTypes.func,
     };
+
+    useEffect(() => {
+        if (prop.pokemonData) {
+            prop.setPokemons((oldPokeList) => [
+                ...oldPokeList,
+                prop.pokemonData,
+            ]);
+        }
+    }, [prop.pokemonData]);
 
     return (
         <div id="conga-wrapper">
