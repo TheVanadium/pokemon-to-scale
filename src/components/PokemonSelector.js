@@ -1,6 +1,12 @@
 import React from "react";
 import "./PokemonSelector.css";
 
+/**
+ * The search bar for adding pokemon.
+ * @module PokemonSelector
+ * @param {*} prop
+ * @return {React.Component}
+ */
 const PokemonSelector = (prop) => {
     // trigger button click event on enter key press
     const handleKeyPress = (event) => {

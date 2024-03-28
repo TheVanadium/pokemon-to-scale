@@ -4,9 +4,11 @@ import "./PokeSpriteList.css";
 import PropTypes from "prop-types";
 
 /**
- * Stores and displays the list of pokemon sprites
+ * Stores and displays the list of pokemon sprites, and handles their removal
  * @module PokeSpriteList
  * @param {*} prop
+ * @param {Array} prop.pokemons The list of pokemon data
+ * @param {Function} prop.setPokemons The function to set the pokemon data
  * @return {React.Component}
  */
 const PokeSpriteList = (prop) => {

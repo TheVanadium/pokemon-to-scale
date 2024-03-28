@@ -6,6 +6,9 @@ import axios from "axios";
 
 /**
  * The main app component
+ * Loads the data from the API and handles the input, passing it to the
+ * PokeSpriteList component. Pass triggers when the submit button (from
+ * PokemonSelector component) is clicked.
  * @module App
  * @return {React.Component} The main app component
  */
