@@ -25,6 +25,41 @@ const PokeSpriteList = (prop) => {
         setPokemonData: PropTypes.func,
     };
 
+    const [reload, setReload] = React.useState(false);
+
+    /**
+     * Calculates the total width of the list of pokemon, which is the sum
+     * of their heights
+     * @return {Number} The total width of the list of pokemon
+     */
+    function listWidth() {
+        const heights = prop.pokemons.map((poke) => poke.height * 10);
+        const totalWidth = heights.reduce((acc, curr) => acc + curr, 0);
+        return totalWidth;
+    }
+
+    const defaultStyle = {
+        justifyContent: "center",
+        overflow: "hidden",
+    };
+
+    const scrollingStyleHorizontal = {
+        justifyContent: "start",
+        overflow: "scroll",
+    };
+
+    let currentStyleHorizontal =
+        listWidth() > window.innerWidth ?
+            scrollingStyleHorizontal : defaultStyle;
+
+    window.onresize = () => {
+        const oldStyle = currentStyleHorizontal;
+        currentStyleHorizontal =
+            listWidth() > window.innerWidth ?
+                scrollingStyleHorizontal : defaultStyle;
+        if (oldStyle !== currentStyleHorizontal) setReload(!reload);
+    };
+
     useEffect(() => {
         if (prop.pokemonData) {
             prop.setPokemons((oldPokeList) => [
@@ -35,7 +70,10 @@ const PokeSpriteList = (prop) => {
     }, [prop.pokemonData]);
 
     return (
-        <div id="conga-wrapper">
+        <div
+            id="conga-wrapper"
+            style={currentStyleHorizontal}
+        >
             {prop.pokemons.map((pokemon, index) => (
                 <PokeSprite
                     key={index}
