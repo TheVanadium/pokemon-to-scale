@@ -25,6 +25,7 @@ function App() {
      * @type {string[]}
      */
     const [suggestions, setSuggestions] = useState([]);
+    const [showSuggestions, setShowSuggestions] = useState(false);
 
     let firstLoaded = false;
 
@@ -173,6 +174,7 @@ function App() {
         }
 
         setSuggestions(newSuggestions);
+        setShowSuggestions(true);
     }
 
     /**
@@ -183,6 +185,7 @@ function App() {
      */
     function clearSuggestions() {
         setSuggestions([]);
+        setShowSuggestions(false);
     }
 
     return (
@@ -192,6 +195,7 @@ function App() {
                 submitName={submitClicked}
                 suggestions={suggestions}
                 clearSuggestions={clearSuggestions}
+                showSuggestions={showSuggestions}
             />
             <PokeSpriteList
                 pokemons={pokemons}

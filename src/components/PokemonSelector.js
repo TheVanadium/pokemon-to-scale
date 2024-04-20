@@ -20,6 +20,9 @@ const PokemonSelector = (prop) => {
      * @return {React.Component}
      */
     function suggestions() {
+        if (!prop.showSuggestions) {
+            return <div></div>;
+        }
         if (prop.suggestions.length <= 0) {
             return (
                 <div id="suggestions">
