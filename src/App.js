@@ -24,7 +24,7 @@ function App() {
      * not be a valid pokemon name
      * @type {string[]}
      */
-    let suggestions = [];
+    const [suggestions, setSuggestions] = useState([]);
 
     let firstLoaded = false;
 
@@ -172,14 +172,27 @@ function App() {
             }
         }
 
-        suggestions = newSuggestions;
-        console.log("Suggestions: ", suggestions);
+        setSuggestions(newSuggestions);
+    }
+
+    /**
+     * Clears suggestions
+     * Called from the PokemonSelector component when a suggestion is clicked
+     * @return {void}
+     * @see PokemonSelector
+     */
+    function clearSuggestions() {
+        setSuggestions([]);
     }
 
     return (
         <div className="app">
             <Header />
-            <PokemonSelector submitName={submitClicked} />
+            <PokemonSelector
+                submitName={submitClicked}
+                suggestions={suggestions}
+                clearSuggestions={clearSuggestions}
+            />
             <PokeSpriteList
                 pokemons={pokemons}
                 setPokemons={setPokemons}
