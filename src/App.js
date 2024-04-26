@@ -69,7 +69,10 @@ function App() {
         if (fullPokeList.includes(processedName)) {
             loadPokeData(processedName);
             input.value = "";
-            if (input.className === "error") input.className = "";
+            if (input.className === "error") {
+                input.className = "";
+                clearSuggestions();
+            }
             return;
         }
         generateSuggestions(input.value);
