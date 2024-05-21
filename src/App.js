@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import PokeSpriteList from "./components/PokeSpriteList";
 import PokemonSelector from "./components/PokemonSelector";
@@ -74,24 +74,24 @@ function App() {
         pokemonName = pokemonName.toLowerCase();
         const words = pokemonName.split(" ");
         switch (words[0]) {
-        case "gigantamax":
-            words[0] = "gmax";
-            break;
-        case "alolan":
-            words[0] = "alola";
-            break;
+            case "gigantamax":
+                words[0] = "gmax";
+                break;
+            case "alolan":
+                words[0] = "alola";
+                break;
         }
 
         switch (words.length) {
-        case 1:
-            return words[0];
-        case 2:
-            return words[1] + "-" + words[0];
-        case 3:
-            return words[1] + "-mega-" + words[2];
+            case 1:
+                return words[0];
+            case 2:
+                return words[1] + "-" + words[0];
+            case 3:
+                return words[1] + "-mega-" + words[2];
             // unprocessable names
-        default:
-            return pokemonName;
+            default:
+                return pokemonName;
         }
     }
 
