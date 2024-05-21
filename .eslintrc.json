@@ -22,6 +22,7 @@
     "rules": {
         "linebreak-style": 0,
         "indent": ["error", 4, { "SwitchCase": 1 }],
-        "quotes": ["error", "double"]
+        "quotes": ["error", "double"],
+        "object-curly-spacing": ["error", "always"]
     }
 }
