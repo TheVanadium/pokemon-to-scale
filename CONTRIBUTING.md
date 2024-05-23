@@ -15,8 +15,8 @@ After completing installation:
 
 Please adhere to the following guidelines when contributing code:
 - Commit Syntax: (https://www.conventionalcommits.org/en/v1.0.0/)
-- JavaScript Style Guide: ESlint. Run `npm run lint` to check for errors.
-- CSS Style Guide: Stylelint. Run `npx stylelint **/*.css` to check for errors.
+- JavaScript Style Guide: ESlint. Run `npm run eslint` to check for errors.
+- CSS Style Guide: Stylelint. Run `npm run stylelint` to check for errors.
 
 ## I want to report a bug or a problem about this project
 

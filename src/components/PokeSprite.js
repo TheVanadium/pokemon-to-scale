@@ -9,7 +9,7 @@ import "./PokeSprite.css";
  *
  * @return {React.Component} The sprite of a pokemon
  */
-export default function PokeSprite( {pokeData, selfTerminate} ) {
+export default function PokeSprite({ pokeData, selfTerminate }) {
     PokeSprite.propTypes = {
         pokeData: Object,
         pokeData: {
@@ -21,7 +21,7 @@ export default function PokeSprite( {pokeData, selfTerminate} ) {
         selfTerminate: Function,
     };
     const pokeStyle = {
-        height: pokeData.height*10 + "px",
+        height: pokeData.height * 10 + "px",
     };
 
     /**
@@ -44,17 +44,17 @@ export default function PokeSprite( {pokeData, selfTerminate} ) {
             );
         } else if (name.endsWith("-mega-x")) {
             return (
-                "Mega " +
-                name.charAt(0).toUpperCase() +
-                name.slice(1, -7) +
-                " X"
+                "Mega "
+                + name.charAt(0).toUpperCase()
+                + name.slice(1, -7)
+                + " X"
             );
         } else if (name.endsWith("-mega-y")) {
             return (
-                "Mega " +
-                name.charAt(0).toUpperCase() +
-                name.slice(1, -7) +
-                " Y"
+                "Mega "
+                + name.charAt(0).toUpperCase()
+                + name.slice(1, -7)
+                + " Y"
             );
         } else {
             return name.charAt(0).toUpperCase() + name.slice(1);
