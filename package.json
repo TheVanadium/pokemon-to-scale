@@ -47,6 +47,7 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.34.0",
     "gh-pages": "^4.0.0",
+    "jest": "^27.5.1",
     "prettier": "3.2.5",
     "stylelint": "^16.2.1",
     "stylelint-config-standard": "^36.0.0"
