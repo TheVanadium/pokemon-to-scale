@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import PokeSpriteList from "./components/PokeSpriteList";
 import PokemonSelector from "./components/PokemonSelector";
 import axios from "axios";
 import levenshtein from "js-levenshtein";
+import { toPokeAPIName, toEnglishName } from "./name_conversion/pokename";
 
 /**
  * The main app component
@@ -40,7 +41,7 @@ function App() {
                 ]);
                 setCommonPokeList((oldPokeList) => [
                     ...oldPokeList,
-                    unprocessPokemonName(pokemon.name),
+                    toEnglishName(pokemon.name),
                 ]);
             }),
         );
@@ -65,7 +66,7 @@ function App() {
      */
     function submitClicked() {
         const input = document.getElementById("selector");
-        const processedName = processPokemonName(input.value);
+        const processedName = toPokeAPIName(input.value);
         if (fullPokeList.includes(processedName)) {
             loadPokeData(processedName);
             input.value = "";
@@ -77,78 +78,6 @@ function App() {
         }
         generateSuggestions(input.value);
         input.className = "error";
-    }
-
-    /**
-     * Processes a pokemon name to be used in the API
-     * @param {string} pokemonName The name of the pokemon to process
-     * @return {string} The processed name
-     *
-     * @example
-     * processPokemonName("Mega Charizard X") // returns "charizard-mega-x"
-     * processPokemonName("Gigantamax Flapple") // returns "flapple-gmax"
-     * processPokemonName("Alolan Raichu") // returns "raichu-alola"
-     */
-    function processPokemonName(pokemonName) {
-        pokemonName = pokemonName.toLowerCase();
-        const words = pokemonName.split(" ");
-        switch (words[0]) {
-        case "gigantamax":
-            words[0] = "gmax";
-            break;
-        case "alolan":
-            words[0] = "alola";
-            break;
-        }
-
-        switch (words.length) {
-        case 1:
-            return words[0];
-        case 2:
-            return words[1] + "-" + words[0];
-        case 3:
-            return words[1] + "-mega-" + words[2];
-            // unprocessable names
-        default:
-            return pokemonName;
-        }
-    }
-
-    /**
-     * Un-processes pokemon names, aka converting names to common names
-     * @param {string} pokemonName The name of the pokemon to unprocess
-     * @return {string} The unprocessed name
-     *
-     * @example
-     * unprocessPokemonName("charizard-mega-x") // returns "Mega Charizard X"
-     * unprocessPokemonName("flapple-gmax") // returns "Gigantamax Flapple"
-     * unprocessPokemonName("raichu-alola") // returns "Alolan Raichu"
-     */
-    function unprocessPokemonName(pokemonName) {
-        const words = pokemonName.split("-");
-        switch (words[0]) {
-        case "gmax":
-            words[0] = "Gigantamax";
-            break;
-        case "alola":
-            words[0] = "Alolan";
-            break;
-        }
-
-        for (let i = 1; i < words.length; i++) {
-            words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
-        }
-
-        switch (words.length) {
-        case 1:
-            return words[0];
-        case 2:
-            return words[1] + " " + words[0];
-        case 3:
-            return words[1] + " " + words[2];
-        default:
-            return pokemonName;
-        }
     }
 
     /**
@@ -190,7 +119,6 @@ function App() {
         setSuggestions([]);
         setShowSuggestions(false);
     }
-
     return (
         <div className="app">
             <Header />

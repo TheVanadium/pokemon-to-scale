@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import PokeSprite from "./PokeSprite";
 import "./PokeSpriteList.css";
 import PropTypes from "prop-types";
@@ -48,15 +48,17 @@ const PokeSpriteList = (prop) => {
         overflow: "scroll",
     };
 
-    let currentStyleHorizontal =
-        listWidth() > window.innerWidth ?
-            scrollingStyleHorizontal : defaultStyle;
+    let currentStyleHorizontal
+        = listWidth() > window.innerWidth
+            ? scrollingStyleHorizontal
+            : defaultStyle;
 
     window.onresize = () => {
         const oldStyle = currentStyleHorizontal;
-        currentStyleHorizontal =
-            listWidth() > window.innerWidth ?
-                scrollingStyleHorizontal : defaultStyle;
+        currentStyleHorizontal
+            = listWidth() > window.innerWidth
+                ? scrollingStyleHorizontal
+                : defaultStyle;
         if (oldStyle !== currentStyleHorizontal) setReload(!reload);
     };
 
@@ -70,10 +72,7 @@ const PokeSpriteList = (prop) => {
     }, [prop.pokemonData]);
 
     return (
-        <div
-            id="conga-wrapper"
-            style={currentStyleHorizontal}
-        >
+        <div id="conga-wrapper" style={currentStyleHorizontal}>
             {prop.pokemons.map((pokemon, index) => (
                 <PokeSprite
                     key={index}
