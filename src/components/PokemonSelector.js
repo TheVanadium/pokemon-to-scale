@@ -40,17 +40,17 @@ const PokemonSelector = (prop) => {
                             key={index}
                             className="suggestion"
                             onClick={() => {
-                                document.getElementById("selector").value =
-                                    pokemon;
+                                document.getElementById("selector").value
+                                    = pokemon;
                                 document.getElementById("pokemon-btn").click();
                                 prop.clearSuggestions();
                             }}
                         >
                             <span className="suggestion-name">{pokemon}</span>
                             <span className="comma">
-                                {index < prop.suggestions.length - 1 ?
-                                    ",\u00A0" :
-                                    ""}
+                                {index < prop.suggestions.length - 1
+                                    ? ",\u00A0"
+                                    : ""}
                             </span>
                         </div>
                     );
