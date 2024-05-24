@@ -5,6 +5,23 @@ test("english to api, single word", () => {
     expect(toPokeAPIName("Vaporeon")).toBe("vaporeon");
     expect(toPokeAPIName("Pikachu")).toBe("pikachu");
 });
+test("english to api, special characters", () => {
+    expect(toPokeAPIName("Farfetch'd")).toBe("farfetchd");
+    expect(toPokeAPIName("Sirfetch'd")).toBe("sirfetchd");
+    expect(toPokeAPIName("Nidoran ♀")).toBe("nidoran-f");
+    expect(toPokeAPIName("Nidoran ♂")).toBe("nidoran-m");
+    expect(toPokeAPIName("Flabébé")).toBe("flabebe");
+    expect(toPokeAPIName("Mr. Mime")).toBe("mr-mime");
+    expect(toPokeAPIName("Mime Jr.")).toBe("mime-jr");
+    expect(toPokeAPIName("Mr. Rime")).toBe("mr-rime");
+    expect(toPokeAPIName("Type: Null")).toBe("type-null");
+});
+test("english to api, normal spaced", () => {
+    expect(toPokeAPIName("Tapu Koko")).toBe("tapu-koko");
+    expect(toPokeAPIName("Tapu Lele")).toBe("tapu-lele");
+    expect(toPokeAPIName("Scream Tail")).toBe("scream-tail");
+    expect(toPokeAPIName("Flutter Mane")).toBe("flutter-mane");
+});
 test("english to api, mega", () => {
     expect(toPokeAPIName("Mega Charizard X")).toBe("charizard-mega-x");
     expect(toPokeAPIName("Mega Charizard Y")).toBe("charizard-mega-y");
@@ -30,6 +47,29 @@ test("english to api, galarian", () => {
 test("api to english, single word", () => {
     expect(toEnglishName("vaporeon")).toBe("Vaporeon");
     expect(toEnglishName("pikachu")).toBe("Pikachu");
+});
+test("api to english, special characters", () => {
+    expect(toEnglishName("farfetchd")).toBe("Farfetch'd");
+    expect(toEnglishName("sirfetchd")).toBe("Sirfetch'd");
+    expect(toEnglishName("nidoran-f")).toBe("Nidoran ♀");
+    expect(toEnglishName("nidoran-m")).toBe("Nidoran ♂");
+    expect(toEnglishName("flabebe")).toBe("Flabébé");
+    expect(toEnglishName("mr-mime")).toBe("Mr. Mime");
+    expect(toEnglishName("mime-jr")).toBe("Mime Jr.");
+    expect(toEnglishName("mr-rime")).toBe("Mr. Rime");
+    expect(toEnglishName("type-null")).toBe("Type: Null");
+});
+test("api to english, hyphenated", () => {
+    expect(toEnglishName("jangmo-o")).toBe("Jangmo-o");
+    expect(toEnglishName("hakamo-o")).toBe("Hakamo-o");
+    expect(toEnglishName("ho-oh")).toBe("Ho-Oh");
+    expect(toEnglishName("porygon-z")).toBe("Porygon-Z");
+});
+test("api to english, normal spaced", () => {
+    expect(toEnglishName("tapu-koko")).toBe("Tapu Koko");
+    expect(toEnglishName("tapu-lele")).toBe("Tapu Lele");
+    expect(toEnglishName("scream-tail")).toBe("Scream Tail");
+    expect(toEnglishName("flutter-mane")).toBe("Flutter Mane");
 });
 test("api to english, mega", () => {
     expect(toEnglishName("charizard-mega-x")).toBe("Mega Charizard X");
