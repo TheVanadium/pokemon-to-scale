@@ -4,8 +4,24 @@
  * @return {string} The pokeapi name of the pokemon
  */
 function toPokeAPIName(englishName) {
+    if (englishName.toLowerCase() === "flabébé") return "flabebe";
     const words = englishName.split(" ");
+    if (words.length === 1) return words[0].replace("'", "").toLowerCase();
+    if (englishName.toLowerCase() === "type: null") return "type-null";
     switch (words[0].toLowerCase()) {
+        // species-specific cases
+        case "mr.":
+            if (words[1].toLowerCase() === "mime") return "mr-mime";
+            return "mr-rime";
+        case "mime":
+            return "mime-jr";
+        case "tapu":
+            return "tapu-" + words[1].toLowerCase();
+        case "nidoran":
+            if (words[1] === "♀") return "nidoran-f";
+            return "nidoran-m";
+
+        // form-specific cases
         case "mega":
             if (words[2] === "X" || words[2] === "Y") {
                 return (
@@ -22,7 +38,7 @@ function toPokeAPIName(englishName) {
         case "galarian":
             return words[1].toLowerCase() + "-galar";
         default:
-            return words[0].toLowerCase();
+            return words.join("-").toLowerCase();
     }
 }
 
@@ -32,11 +48,40 @@ function toPokeAPIName(englishName) {
  * @return {string} The english name of the pokemon
  */
 function toEnglishName(pokeAPIName) {
+    if (pokeAPIName.toLowerCase() === "flabebe") return "Flabébé";
     const words = pokeAPIName.split("-");
     for (let i = 0; i < words.length; i++) {
         words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
     }
+    switch (words[0]) {
+        case "Farfetchd":
+            return "Farfetch'd";
+        case "Sirfetchd":
+            return "Sirfetch'd";
+        case "Flabebe":
+            return "Flabébé";
+    }
+    if (words.length === 1) return words[0];
     switch (words[1]) {
+        // pokemon-specific cases
+        case "Mime":
+        case "Rime":
+            return "Mr. " + words[1];
+        case "Jr":
+            return "Mime Jr.";
+        case "Null":
+            return "Type: Null";
+        case "M":
+            return "Nidoran ♂";
+        case "F":
+            return "Nidoran ♀";
+        case "O":
+            return words[0] + "-o";
+        case "Oh":
+            return "Ho-Oh";
+        case "Z":
+            return "Porygon-Z";
+
         case "Mega":
             if (words[2] === "X" || words[2] === "Y") {
                 return "Mega " + words[0] + " " + words[2];
@@ -51,7 +96,7 @@ function toEnglishName(pokeAPIName) {
         case "Galar":
             return "Galarian " + words[0];
         default:
-            return words[0].charAt(0).toUpperCase() + words[0].slice(1);
+            return words.join(" ");
     }
 }
 
