@@ -3,7 +3,8 @@ import Header from "./components/Header";
 import PokeSpriteList from "./components/PokeSpriteList";
 import PokemonSelector from "./components/PokemonSelector";
 import axios from "axios";
-import { toPokeAPIName } from "./name_conversion/pokename";
+import levenshtein from "js-levenshtein";
+import { toPokeAPIName, toEnglishName } from "./name_conversion/pokename";
 
 /**
  * The main app component
@@ -17,6 +18,16 @@ function App() {
     const [pokemonData, setPokemonData] = useState();
     const [pokemons, setPokemons] = useState([]);
     const [fullPokeList, setFullPokeList] = useState([]);
+    const [commonPokeList, setCommonPokeList] = useState([]);
+
+    /**
+     * Pokemon name suggestions that are similar to the input, should the input
+     * not be a valid pokemon name
+     * @type {string[]}
+     */
+    const [suggestions, setSuggestions] = useState([]);
+    const [showSuggestions, setShowSuggestions] = useState(false);
+
     let firstLoaded = false;
 
     useEffect(() => {
@@ -27,6 +38,10 @@ function App() {
                 setFullPokeList((oldPokeList) => [
                     ...oldPokeList,
                     pokemon.name,
+                ]);
+                setCommonPokeList((oldPokeList) => [
+                    ...oldPokeList,
+                    toEnglishName(pokemon.name),
                 ]);
             }),
         );
@@ -55,16 +70,62 @@ function App() {
         if (fullPokeList.includes(processedName)) {
             loadPokeData(processedName);
             input.value = "";
-            if (input.className === "error") input.className = "";
+            if (input.className === "error") {
+                input.className = "";
+                clearSuggestions();
+            }
             return;
         }
+        generateSuggestions(input.value);
         input.className = "error";
     }
 
+    /**
+     * Generates a list of suggestions based on the input to find the closest
+     * matching pokemon name
+     * Updates the suggestions state
+     * Uses the levenshtein distance algorithm to find pokemon with edit
+     * distance less than or equal to 2 or half the length of the input,
+     * whichever is smaller (I don't like how it recommends "mew" for "saw",
+     * so I added this half length thing to prevent that)
+     *
+     * @param {string} inputName The input to generate suggestions for
+     * @return {void}
+     */
+    function generateSuggestions(inputName) {
+        const lowerName = inputName.toLowerCase();
+        const newSuggestions = [];
+        const MAX_DISTANCE = Math.min(Math.floor(lowerName.length / 2), 2);
+        for (let i = 0; i < commonPokeList.length; i++) {
+            const currentPokeNameLower = commonPokeList[i].toLowerCase();
+            if (levenshtein(lowerName, currentPokeNameLower) <= MAX_DISTANCE) {
+                newSuggestions.push(commonPokeList[i]);
+            }
+        }
+
+        setSuggestions(newSuggestions);
+        setShowSuggestions(true);
+    }
+
+    /**
+     * Clears suggestions
+     * Called from the PokemonSelector component when a suggestion is clicked
+     * @return {void}
+     * @see PokemonSelector
+     */
+    function clearSuggestions() {
+        setSuggestions([]);
+        setShowSuggestions(false);
+    }
     return (
         <div className="app">
             <Header />
-            <PokemonSelector submitName={submitClicked} />
+            <PokemonSelector
+                submitName={submitClicked}
+                suggestions={suggestions}
+                clearSuggestions={clearSuggestions}
+                showSuggestions={showSuggestions}
+            />
             <PokeSpriteList
                 pokemons={pokemons}
                 setPokemons={setPokemons}
