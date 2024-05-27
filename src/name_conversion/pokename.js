@@ -14,7 +14,8 @@ function toPokeAPIName(englishName) {
         // species-specific cases
         case "mr.":
             if (words[1].toLowerCase() === "mime") return "mr-mime";
-            return "mr-rime";
+            if (words[1].toLowerCase() === "rime") return "mr-rime";
+            return "mr-" + words[1].toLowerCase();
         case "mime":
             return "mime-jr";
         case "tapu":
@@ -25,7 +26,10 @@ function toPokeAPIName(englishName) {
 
         // form-specific cases
         case "mega":
-            if (words[2] === "X" || words[2] === "Y") {
+            if (
+                words[2].toLowerCase() === "x"
+                || words[2].toLowerCase() === "y"
+            ) {
                 return (
                     words[1].toLowerCase() + "-mega-" + words[2].toLowerCase()
                 );
