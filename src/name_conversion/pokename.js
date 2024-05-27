@@ -5,6 +5,8 @@
  */
 function toPokeAPIName(englishName) {
     if (englishName.toLowerCase() === "flabébé") return "flabebe";
+    if (englishName.toLowerCase() === "nidoran♀") return "nidoran-f";
+    if (englishName.toLowerCase() === "nidoran♂") return "nidoran-m";
     const words = englishName.split(" ");
     if (words.length === 1) return words[0].replace("'", "").toLowerCase();
     if (englishName.toLowerCase() === "type: null") return "type-null";
@@ -72,9 +74,9 @@ function toEnglishName(pokeAPIName) {
         case "Null":
             return "Type: Null";
         case "M":
-            return "Nidoran ♂";
+            return "Nidoran♂";
         case "F":
-            return "Nidoran ♀";
+            return "Nidoran♀";
         case "O":
             return words[0] + "-o";
         case "Oh":

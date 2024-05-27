@@ -8,8 +8,8 @@ test("english to api, single word", () => {
 test("english to api, special characters", () => {
     expect(toPokeAPIName("Farfetch'd")).toBe("farfetchd");
     expect(toPokeAPIName("Sirfetch'd")).toBe("sirfetchd");
-    expect(toPokeAPIName("Nidoran ♀")).toBe("nidoran-f");
-    expect(toPokeAPIName("Nidoran ♂")).toBe("nidoran-m");
+    expect(toPokeAPIName("Nidoran♀")).toBe("nidoran-f");
+    expect(toPokeAPIName("Nidoran♂")).toBe("nidoran-m");
     expect(toPokeAPIName("Flabébé")).toBe("flabebe");
     expect(toPokeAPIName("Mr. Mime")).toBe("mr-mime");
     expect(toPokeAPIName("Mime Jr.")).toBe("mime-jr");
@@ -51,8 +51,8 @@ test("api to english, single word", () => {
 test("api to english, special characters", () => {
     expect(toEnglishName("farfetchd")).toBe("Farfetch'd");
     expect(toEnglishName("sirfetchd")).toBe("Sirfetch'd");
-    expect(toEnglishName("nidoran-f")).toBe("Nidoran ♀");
-    expect(toEnglishName("nidoran-m")).toBe("Nidoran ♂");
+    expect(toEnglishName("nidoran-f")).toBe("Nidoran♀");
+    expect(toEnglishName("nidoran-m")).toBe("Nidoran♂");
     expect(toEnglishName("flabebe")).toBe("Flabébé");
     expect(toEnglishName("mr-mime")).toBe("Mr. Mime");
     expect(toEnglishName("mime-jr")).toBe("Mime Jr.");
