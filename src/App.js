@@ -95,13 +95,11 @@ function App() {
     function generateSuggestions(inputName) {
         const lowerName = inputName.toLowerCase();
         const newSuggestions = [];
-        const MAX_DISTANCE = Math.min(
-            Math.floor(lowerName.length / 2),
-            2,
-        );
+        const MAX_DISTANCE = Math.min(Math.floor(lowerName.length / 2), 2);
         for (let i = 0; i < commonPokeList.length; i++) {
-            if (levenshtein(lowerName, commonPokeList[i]) <= MAX_DISTANCE) {
-                newSuggestions.push(fullPokeList[i]);
+            const currentPokeNameLower = commonPokeList[i].toLowerCase();
+            if (levenshtein(lowerName, currentPokeNameLower) <= MAX_DISTANCE) {
+                newSuggestions.push(commonPokeList[i]);
             }
         }
 
