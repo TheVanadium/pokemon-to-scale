@@ -25,7 +25,10 @@ function toPokeAPIName(englishName) {
 
         // form-specific cases
         case "mega":
-            if (words[2] === "X" || words[2] === "Y") {
+            if (
+                words[2].toLowerCase() === "x"
+                || words[2].toLowerCase() === "y"
+            ) {
                 return (
                     words[1].toLowerCase() + "-mega-" + words[2].toLowerCase()
                 );
