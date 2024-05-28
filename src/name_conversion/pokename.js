@@ -24,15 +24,8 @@ function toPokeAPIName(englishName) {
 
         // form-specific cases
         case "mega":
-            if (
-                words[2].toLowerCase() === "x"
-                || words[2].toLowerCase() === "y"
-            ) {
-                return (
-                    words[1].toLowerCase() + "-mega-" + words[2].toLowerCase()
-                );
-            }
-            return words[1].toLowerCase() + "-mega";
+            if (words.length === 2) return words[1].toLowerCase() + "-mega";
+            return words[1].toLowerCase() + "-mega-" + words[2].toLowerCase();
         case "gigantamax":
             return words[1].toLowerCase() + "-gmax";
         case "alolan":
