@@ -13,8 +13,6 @@ function toPokeAPIName(englishName) {
     switch (words[0].toLowerCase()) {
         // species-specific cases
         case "mr.":
-            if (words[1].toLowerCase() === "mime") return "mr-mime";
-            if (words[1].toLowerCase() === "rime") return "mr-rime";
             return "mr-" + words[1].toLowerCase();
         case "mime":
             return "mime-jr";
@@ -26,15 +24,8 @@ function toPokeAPIName(englishName) {
 
         // form-specific cases
         case "mega":
-            if (
-                words[2].toLowerCase() === "x"
-                || words[2].toLowerCase() === "y"
-            ) {
-                return (
-                    words[1].toLowerCase() + "-mega-" + words[2].toLowerCase()
-                );
-            }
-            return words[1].toLowerCase() + "-mega";
+            if (words.length === 2) return words[1].toLowerCase() + "-mega";
+            return words[1].toLowerCase() + "-mega-" + words[2].toLowerCase();
         case "gigantamax":
             return words[1].toLowerCase() + "-gmax";
         case "alolan":
