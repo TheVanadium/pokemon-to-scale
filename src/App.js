@@ -33,18 +33,38 @@ function App() {
     useEffect(() => {
         if (firstLoaded) return;
         firstLoaded = true;
-        axios.get("https://pokeapi.co/api/v2/pokemon/?limit=2000").then((res) =>
-            res.data.results.map((pokemon) => {
-                setFullPokeList((oldPokeList) => [
-                    ...oldPokeList,
-                    pokemon.name,
-                ]);
-                setCommonPokeList((oldPokeList) => [
-                    ...oldPokeList,
-                    toEnglishName(pokemon.name),
-                ]);
-            }),
-        );
+
+        const cachedFullPokeList = localStorage.getItem("fullPokeList");
+        const cachedCommonPokeList = localStorage.getItem("commonPokeList");
+        if (cachedFullPokeList && cachedCommonPokeList) {
+            setFullPokeList(JSON.parse(cachedFullPokeList));
+            setCommonPokeList(JSON.parse(cachedCommonPokeList));
+            loadPokeData("vaporeon");
+            return;
+        }
+        axios
+            .get("https://pokeapi.co/api/v2/pokemon/?limit=2000")
+            .then((res) => {
+                const newFullPokeList = res.data.results.map(
+                    (pokemon) => pokemon.name,
+                );
+                const newCommonPokeList = newFullPokeList.map((name) =>
+                    toEnglishName(name),
+                );
+
+                setFullPokeList(newFullPokeList);
+                setCommonPokeList(newCommonPokeList);
+
+                // Store data in local storage
+                localStorage.setItem(
+                    "fullPokeList",
+                    JSON.stringify(newFullPokeList),
+                );
+                localStorage.setItem(
+                    "commonPokeList",
+                    JSON.stringify(newCommonPokeList),
+                );
+            });
         loadPokeData("vaporeon");
     }, []);
 
@@ -54,9 +74,33 @@ function App() {
      * @return {void}
      */
     function loadPokeData(pokeName) {
+        // Check if the data is already stored in local storage
+        let cachedData = localStorage.getItem("fullPokemonDataSet");
+        if (!cachedData) {
+            localStorage.setItem("fullPokemonDataSet", "{}");
+            cachedData = "{}";
+        }
+        const parsedData = JSON.parse(cachedData);
+        if (parsedData[pokeName]) {
+            setPokemonData(parsedData[pokeName]);
+            return;
+        }
         axios
             .get("https://pokeapi.co/api/v2/pokemon/" + pokeName)
-            .then((res) => setPokemonData((prevPokeData) => res.data));
+            .then((res) => {
+                setPokemonData((prevPokeData) => res.data);
+                return res.data;
+            })
+            .then((data) => {
+                const newData = {
+                    ...JSON.parse(localStorage.getItem("fullPokemonDataSet")),
+                };
+                newData[pokeName] = data;
+                localStorage.setItem(
+                    "fullPokemonDataSet",
+                    JSON.stringify(newData),
+                );
+            });
     }
 
     /**
