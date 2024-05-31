@@ -36,7 +36,17 @@ function App() {
 
         const cachedFullPokeList = localStorage.getItem("fullPokeList");
         const cachedCommonPokeList = localStorage.getItem("commonPokeList");
-        if (cachedFullPokeList && cachedCommonPokeList) {
+
+        const MILLIS_IN_MONTH = 30 * 24 * 60 * 60 * 1000;
+        const namesUpdatedRecently
+            = new Date().getTime()
+                - new Date(localStorage.getItem("namesLastUpdated")).getTime()
+            < MILLIS_IN_MONTH;
+        if (
+            cachedFullPokeList
+            && cachedCommonPokeList
+            && namesUpdatedRecently
+        ) {
             setFullPokeList(JSON.parse(cachedFullPokeList));
             setCommonPokeList(JSON.parse(cachedCommonPokeList));
             loadPokeData("vaporeon");
@@ -63,6 +73,12 @@ function App() {
                 localStorage.setItem(
                     "commonPokeList",
                     JSON.stringify(newCommonPokeList),
+                );
+                localStorage.setItem(
+                    "namesLastUpdated",
+                    new Date().toISOString(
+                        new Date().getTime() + 24 * 60 * 60 * 1000,
+                    ),
                 );
             });
         loadPokeData("vaporeon");
